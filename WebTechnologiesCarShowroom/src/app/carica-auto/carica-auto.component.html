@@ -1,0 +1,213 @@
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/alfa.component.css">
+    <!--link versione nuova-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!DOCTYPE html>
+<html lang="it">
+
+<div class="container">
+<div class="row row-cols-2 row-cols-sm-4 ">
+  <div class="col">
+    <p>1°foto</p>
+    <input type="file" (change)="uploadImage($event)"> 
+  </div>
+  <div class="col">
+    <p>2°foto</p>
+    <input type="file" (change)="uploadImage1($event)"> 
+  </div>
+  <div class="col">
+    <p>3°foto</p>
+    <input type="file" (change)="uploadImage2($event)"> 
+  </div>
+  <div class="col">
+    <p>4°foto</p>
+    <input type="file" (change)="uploadImage3($event)"> 
+  </div>
+  <div class="col">
+    <p>5°foto</p>
+    <input type="file" (change)="uploadImage4($event)"> 
+  </div>
+  <div class="col">
+    <p>6°foto</p>
+    <input type="file" (change)="uploadImage5($event)"> 
+  </div>
+  <div class="col">
+    <p>logo</p>
+    <input type="file" (change)="uploadImage6($event)"> 
+  </div> 
+  
+</div>
+<button (click)="getDownload(); getDownload1(); getDownload2(); getDownload3(); getDownload4(); getDownload5(); getDownload6();" class="btn btn-danger" >Salva</button>
+</div>
+
+<!--<div>
+{{downloadURL}}
+</div>-->
+
+
+
+
+<!--
+<form [formGroup]=" addcarform"(ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" formControlName="nome" >
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" formControlName="email" >
+  </div>
+  <button type="submit">Invia</button>
+</form>
+-->
+
+
+
+<body>
+
+  <form [formGroup]="addcarform"  (ngSubmit)="onSubmit()" class="form">
+
+    <div  class="container" id="titolo">
+
+        <h1>Nome auto<input type="text" class="form-control" id="NomeAuto" placeholder="Nome auto" formControlName="nome"> </h1> 
+        <h3>Prezzo<input type="text" class="form-control" id="prezzo" placeholder="Prezzo" formControlName="prezzo"></h3>
+    </div>
+
+    <div class="container" id="contenitore1">
+
+
+
+       
+
+
+
+
+        <div class="container" id="contenitore2">
+            <h3>Caratteristiche</h3>
+            <div class="row row-cols-2 row-cols-sm-4 ">
+                <div class="col"> <strong>Stato:<br></strong><input type="text" class="form-control" id="stato" placeholder="Stato" formControlName="stato">
+                    <p><!--riga vuota--></p>
+                </div>
+                <div class="col"><strong>Immatricolazione:<br></strong><input type="text" class="form-control" id="immatricolazione" placeholder="Immatricolazione" formControlName="immatricolazione">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Porte:<br></strong><input type="text" class="form-control" id="porte" placeholder="Porte" formControlName="porte">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Chilometri:<br></strong>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="chilometri" placeholder="Chilometri" formControlName="chilometri">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Km</span>
+                        </div>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="col"><strong>Alimentazione:<br></strong><input type="text" class="form-control"
+                        id="alimentazione" placeholder="Alimentazione" formControlName="alimentazione">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Cambio:<br></strong><input type="text" class="form-control" id="cambio"
+                        placeholder="Cambio" formControlName="cambio">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Colore esterno:<br></strong><input type="text" class="form-control" id="colore"
+                        placeholder="Colore esterno" formControlName="colore">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Interno:<br></strong><input type="text" class="form-control" id="interno"
+                        placeholder="Interno" formControlName="interno">
+                    <p></p>
+                </div>
+                <div class="col"><strong>Cilindrata:<br></strong>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="cilindrata" placeholder="Cilindrata" formControlName="cilindrata">
+                        <div class="input-group-append">
+                            <span class="input-group-text">cc</span>
+                        </div>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="col"><strong>Potenza:<br></strong>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="potenza" placeholder="Potenza" formControlName="potenza" >
+                        <div class="input-group-append">
+                            <span class="input-group-text">kW/CV</span>
+                        </div>
+                    </div>
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--<div class="container" id="contenitore3">
+    <h3>Equipaggiamenti</h3>
+    <div class="row row-cols-2 row-cols-sm-4 ">
+      <div class="col"><li>asr</li></div>
+      <div class="col"><li>baffetti rossi anteriori e posteriori</li></div>
+      <div class="col"><li>blocco vetri</li></div>
+      <div class="col"><li>ingresso aux e usb</li></div>
+      <div class="col"><li> minigonne sportive</div>
+      <div class="col"><li> blu & me</li></div>
+      <div class="col"><li>bracciolo lato guida e passeggero</li></div>
+      <div class="col"><li>cerchi in lega 18"</li></div>
+      <div class="col"><li>ruotino di scorta</li></div>
+      <div class="col"><li>sensori di parcheggio posteriori</li></div>
+      <div class="col"><li>chiusura interna antirapina</div>
+      <div class="col"><li>city</li></div>
+      <div class="col"><li>specchietti retrovisori elettrici</li></div>
+      <div class="col"><li>clima automatico bizona</li></div>
+      <div class="col"><li>comandi al volante</li></div>
+      <div class="col"><li>cruise control</li></div>
+      <div class="col"><li>strart & stop</div>
+      <div class="col"><li>fendinebbia</li></div>
+      <div class="col"><li>hill holder</li></div>
+      <div class="col"><li>vetri elettrici anteriori e posteriori</li></div>
+    </div>
+  </div>-->
+        <div class="container" id="contenitore4">
+            <div>
+                <h3>Descrizione veicolo</h3>
+                <textarea class="form-control" id="descrizione" placeholder="Descrizione veicolo" formControlName="descrizione" rows="5"></textarea>
+            </div>
+        </div>
+
+        <br>
+        <div class="container" id="contenitore 5">
+            <h3>Descrizione breve del veicolo</h3>
+            <textarea class="form-control" id="breve" placeholder="Descrizione breve del veicolo" formControlName="descrizione_breve"></textarea>
+        </div>
+        <br>
+        
+    </div>
+    <button type="submit" class="btn btn-danger" id="carica">Carica</button>
+ </form>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+
+
+        <!--link vesione nuova-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+</body>

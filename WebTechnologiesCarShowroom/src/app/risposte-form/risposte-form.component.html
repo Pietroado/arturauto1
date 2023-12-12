@@ -1,0 +1,9 @@
+<div>
+    <p>Risposte form</p>
+    <div>
+        <div *ngFor="let form of forms; index as i">
+            <p>{{form.nome}}  {{form.cognome}}   </p>
+            <button (click)="onDeleteForm(form.id);">Elimina</button>
+        </div>
+    </div>
+</div>

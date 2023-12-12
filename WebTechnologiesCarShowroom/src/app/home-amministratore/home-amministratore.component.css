@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Imposta la direzione dei cerchi da sinistra verso destra */
+}
+i:hover{
+    color: black;
+}
+.circle {
+    width: 200px;
+    height: 200px;
+    float: left;
+    border-radius: 50%;
+    background-color:black; /* Colore di riempimento */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ombra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* Colore del testo */
+    font-size: 54px;
+    margin: 80px; /* Spazio tra i cerchi */
+    text-decoration: none; /* Rimuovi la sottolineatura dei link */
+}
+
+.circle:hover{
+    background-color: red;
+}
+
+i:hover{color: aqua};
